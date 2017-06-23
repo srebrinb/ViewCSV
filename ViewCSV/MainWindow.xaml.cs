@@ -23,7 +23,7 @@ namespace ViewCSV
     public partial class MainWindow : Window
     {
         string[] LastRow;
-        string filename;
+        string filename="";
         IEnumerable<IDRow> rowsList;
         public MainWindow()
         {
@@ -31,9 +31,19 @@ namespace ViewCSV
 
             InitializeComponent();
             String[] arguments = Environment.GetCommandLineArgs();
-            this.FileName.Content = String.Join(", ", arguments);
-            filename = arguments[1];
-            using (TextReader fileReader = File.OpenText(arguments[1]))
+            int i = 0;
+            foreach (String argument in arguments)
+            {
+                i++;
+                if (i == 1)
+                    continue;
+                filename += argument + " ";
+
+
+            }
+            filename = filename.Trim();
+            FileName.Content = filename;
+            using (TextReader fileReader = File.OpenText(filename))
             {
                 //                var csv = new CsvReader(fileReader);
                 //csv.Configuration.HasHeaderRecord = false;
@@ -117,6 +127,16 @@ namespace ViewCSV
         private void Община_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void Фамилия_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Фамилия.BorderBrush = new SolidColorBrush(Colors.Red);
+        }
+
+        private void Име_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Име.BorderBrush = new SolidColorBrush(Colors.Red);
         }
     }
 }
