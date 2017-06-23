@@ -5,39 +5,39 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ViewCSV"
         mc:Ignorable="d"
-        Title="MainWindow" Height="422.082" Width="557.037">
-    <Grid Margin="0,1,-8,-8">
+        Title="MainWindow" Height="422.082" Width="528.398">
+    <Grid Margin="0,1,2,-8">
         <Label x:Name="FileName" Content="Label" Margin="10,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Фамилия" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="103,42,292,0"/>
+        <TextBox x:Name="Фамилия" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="102,42,292,0"/>
         <Label Content="Фамилия:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,41,0,0"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="142,327,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="376,327,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Save" HorizontalAlignment="Right" Margin="0,327,338,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,327,83,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
         <TextBox x:Name="Име" Height="22" Margin="103,78,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Име:" HorizontalAlignment="Left" Margin="66,76,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Презиме" Height="24" Margin="103,104,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Презиме:" HorizontalAlignment="Left" Margin="40,103,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Националност" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="376,42,19,0"/>
-        <Label x:Name="___No_Name_" Content="Националност:" Margin="285,41,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="92"/>
-        <TextBox x:Name="Дата_на_раждане" Height="22" Margin="376,78,19,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="Дата на раждане:" Margin="271,76,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="106"/>
+        <TextBox x:Name="Националност" Height="24" TextWrapping="Wrap" VerticalAlignment="Top" Margin="0,42,19,0" HorizontalAlignment="Right" Width="139"/>
+        <Label x:Name="___No_Name_" Content="Националност:" Margin="0,0,157,331" Height="26" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="92"/>
+        <TextBox x:Name="Дата_на_раждане" Height="22" Margin="0,78,19,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="140"/>
+        <Label Content="Дата на раждане:" Margin="0,76,158,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="106"/>
         <TextBox x:Name="Валидност" Height="23" Margin="103,134,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Валидност:" HorizontalAlignment="Left" Margin="32,132,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Място_на_раждане" Height="24" Margin="376,104,19,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="Място на раждане:" Margin="262,103,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="115"/>
+        <TextBox x:Name="Място_на_раждане" Height="24" Margin="0,104,19,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="140"/>
+        <Label Content="Място на раждане:" Margin="0,103,158,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="115"/>
         <TextBox x:Name="Област" Height="23" Margin="103,160,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="___No_Name__Copy" Content="Област:" HorizontalAlignment="Left" Margin="51,158,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Община" Height="23" Margin="376,160,19,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Община_TextChanged"/>
-        <Label x:Name="___No_Name__Copy1" Content="Община:" Margin="319,158,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="58"/>
+        <TextBox x:Name="Община" Height="23" Margin="0,160,19,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Община_TextChanged" HorizontalAlignment="Right" Width="140"/>
+        <Label x:Name="___No_Name__Copy1" Content="Община:" Margin="0,158,158,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="58"/>
         <TextBox x:Name="Адрес" Height="23" Margin="103,194,19,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="___No_Name__Copy2" Content="Адрес:" HorizontalAlignment="Left" Margin="56,194,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Издаден_от" Height="23" Margin="103,225,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="___No_Name__Copy3" Content="Издаден от:" HorizontalAlignment="Left" Margin="27,225,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Издаден_на" Height="23" Margin="376,225,19,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label x:Name="___No_Name__Copy4" Content="Издаден на:" Margin="301,225,0,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Left" Width="76"/>
+        <TextBox x:Name="Издаден_на" Height="23" Margin="0,225,19,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="140"/>
+        <Label x:Name="___No_Name__Copy4" Content="Издаден на:" Margin="0,225,158,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="76"/>
         <TextBox x:Name="Номер_на_карта" Height="23" Margin="103,259,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label Content="Номер на карта:" HorizontalAlignment="Left" Margin="2,256,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="ЕГН" Height="23" Margin="376,262,19,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Label Content="ЕГН:" Margin="344,259,0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Width="33" RenderTransformOrigin="1,0.5"/>
+        <TextBox x:Name="ЕГН" Height="23" Margin="0,262,19,0" TextWrapping="Wrap" VerticalAlignment="Top" HorizontalAlignment="Right" Width="140"/>
+        <Label Content="ЕГН:" Margin="0,259,158,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="33" RenderTransformOrigin="1,0.5"/>
 
     </Grid>
 </Window>
