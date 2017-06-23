@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ViewCSV
 {
-    class IDRow
+    public class IDRow
     {
         public string Фамилия { get; set; }
         public string Име { get; set; }
         public string Презиме { get; set; }
         public string Националност { get; set; }
-        public string ДатаНаРаждане { get; set; }
+        public string Дата_на_раждане { get; set; }
         public string Валидност { get; set; }
         public string Място_на_раждане { get; set; }
         public string Област { get; set; }

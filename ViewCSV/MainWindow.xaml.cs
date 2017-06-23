@@ -43,37 +43,36 @@ namespace ViewCSV
                var csv = new CsvReader(fileReader);
                 csv.Configuration.Delimiter = ",";
                 csv.Configuration.HasHeaderRecord = true;
-                var parser = new CsvParser(fileReader);
-                parser.Configuration.Delimiter = ",";
-                parser.Configuration.HasHeaderRecord = true;
-                rowsList = csv.GetRecords<IDRow>();
-                foreach(IDRow row in rowsList)                
-                {
-                    //     var Номер_на_карта = csv.GetField<string>("Номер на карта");
-                    //     var Презиме = csv.GetField<string>("Презиме");
-                    //     var boolField = csv.GetField<string>(2);
-                    //     this.Tname.Text = Номер_на_карта + Презиме + boolField;
-                    
-                    try {
-                        this.Фамилия.Text = row.Фамилия;
-                        this.Име.Text = row.Име;
-                        this.Презиме.Text = row.Презиме;
-                        this.Националност.Text = row.Националност;
-                        this.Дата_на_раждане.Text = row.ДатаНаРаждане;
-                        this.Валидност.Text = row.Валидност;
-                        this.Място_на_раждане.Text = row.Място_на_раждане;
-                        this.Област.Text = row.Област;
-                        this.Община.Text = row.Община;
-                        this.Адрес.Text = row.Адрес;
-                        this.Издаден_от.Text = row.Издаден_от;
-                        this.Издаден_на.Text = row.Издаден_на;
-                        this.Номер_на_карта.Text = row.Номер_на_карта;
-                        this.ЕГН.Text = row.ЕГН;
+                csv.Configuration.RegisterClassMap<CustomClassMap>();
+                rowsList = csv.GetRecords<IDRow>().ToList();
+
+                var lastrow = rowsList.Last<IDRow>();
+
+                //     var Номер_на_карта = csv.GetField<string>("Номер на карта");
+                //     var Презиме = csv.GetField<string>("Презиме");
+                //     var boolField = csv.GetField<string>(2);
+                //     this.Tname.Text = Номер_на_карта + Презиме + boolField;
+
+                try {
+                        this.Фамилия.Text = lastrow.Фамилия;
+                        this.Име.Text = lastrow.Име;
+                        this.Презиме.Text = lastrow.Презиме;
+                        this.Националност.Text = lastrow.Националност;
+                        this.Дата_на_раждане.Text = lastrow.Дата_на_раждане;
+                        this.Валидност.Text = lastrow.Валидност;
+                        this.Място_на_раждане.Text = lastrow.Място_на_раждане;
+                        this.Област.Text = lastrow.Област;
+                        this.Община.Text = lastrow.Община;
+                        this.Адрес.Text = lastrow.Адрес;
+                        this.Издаден_от.Text = lastrow.Издаден_от;
+                        this.Издаден_на.Text = lastrow.Издаден_на;
+                        this.Номер_на_карта.Text = lastrow.Номер_на_карта;
+                        this.ЕГН.Text = lastrow.ЕГН;
                         
                     }
                     catch (CsvMissingFieldException c) { }
 
-                }
+                
             }
             
             
@@ -81,10 +80,29 @@ namespace ViewCSV
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            
+
+            var lastrow = rowsList.Last<IDRow>();
+            lastrow.Фамилия = Фамилия.Text;
+            lastrow.Име = Име.Text;
+            lastrow.Презиме = Презиме.Text;
+            lastrow.Националност = Националност.Text;
+            lastrow.Дата_на_раждане = Дата_на_раждане.Text;
+            lastrow.Валидност = Валидност.Text;
+            lastrow.Място_на_раждане = Място_на_раждане.Text;
+            lastrow.Област = Област.Text;
+            lastrow.Община = Община.Text;
+            lastrow.Адрес = Адрес.Text;
+            lastrow.Издаден_от = Издаден_от.Text;
+            lastrow.Издаден_на = Издаден_на.Text;
+            lastrow.Номер_на_карта = Номер_на_карта.Text;
+            lastrow.ЕГН = ЕГН.Text;
+            File.Copy(filename, filename + ".bak",true);
             using (var csv = new CsvWriter(new StreamWriter(filename)))
             {
-                csv.WriteRecords(LastRow);
+                csv.Configuration.RegisterClassMap<CustomClassMap>();
+                csv.Configuration.Delimiter = ",";
+                csv.Configuration.HasHeaderRecord = true;
+                csv.WriteRecords(rowsList.ToList());
             }
 
             Environment.Exit(1);
@@ -94,6 +112,11 @@ namespace ViewCSV
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             Environment.Exit(0);
+        }
+
+        private void Община_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
     }
 }
