@@ -26,8 +26,8 @@
         <Label Content="Място на раждане:" Margin="0,103,158,0" Height="26" VerticalAlignment="Top" HorizontalAlignment="Right" Width="115"/>
         <TextBox x:Name="Област" Height="23" Margin="103,160,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="___No_Name__Copy" Content="Област:" HorizontalAlignment="Left" Margin="51,158,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Община" Height="23" Margin="0,160,19,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Община_TextChanged" HorizontalAlignment="Right" Width="140"/>
-        <Label x:Name="___No_Name__Copy1" Content="Община:" Margin="0,158,158,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="58"/>
+        <TextBox x:Name="Община" Height="47" Margin="0,136,18,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="Община_TextChanged" HorizontalAlignment="Right" Width="140"/>
+        <Label x:Name="___No_Name__Copy1" Content="Община:" Margin="0,134,157,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="58"/>
         <TextBox x:Name="Адрес" Height="23" Margin="103,194,19,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <Label x:Name="___No_Name__Copy2" Content="Адрес:" HorizontalAlignment="Left" Margin="56,194,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Издаден_от" Height="23" Margin="103,225,292,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
