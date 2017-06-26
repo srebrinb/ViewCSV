@@ -14,6 +14,7 @@ using System.Windows.Shapes;
 using Microsoft.VisualBasic;
 using CsvHelper;
 using System.IO;
+using Microsoft.Win32;
 
 namespace ViewCSV
 {
@@ -42,52 +43,84 @@ namespace ViewCSV
 
             }
             filename = filename.Trim();
-            FileName.Content = filename;
-            using (TextReader fileReader = File.OpenText(filename))
+            if (filename == "")
             {
-                //                var csv = new CsvReader(fileReader);
-                //csv.Configuration.HasHeaderRecord = false;
-                //               allValues = csv.GetRecords<string>();
-                //              this.Tname.Text =  allValues.get .First<string>();
-               
-               var csv = new CsvReader(fileReader);
-                csv.Configuration.Delimiter = ",";
-                csv.Configuration.HasHeaderRecord = true;
-                csv.Configuration.RegisterClassMap<CustomClassMap>();
-                rowsList = csv.GetRecords<IDRow>().ToList();
+                OpenFileDialog openFileDialog1 = new OpenFileDialog();
+                openFileDialog1.Filter = "csv files (*.csv)|*.csv|txt files (*.txt)|*.txt|All files (*.*)|*.*";
+                openFileDialog1.FilterIndex = 1;
 
-                var lastrow = rowsList.Last<IDRow>();
+                openFileDialog1.RestoreDirectory = true;
 
-                //     var Номер_на_карта = csv.GetField<string>("Номер на карта");
-                //     var Презиме = csv.GetField<string>("Презиме");
-                //     var boolField = csv.GetField<string>(2);
-                //     this.Tname.Text = Номер_на_карта + Презиме + boolField;
+                openFileDialog1.ShowDialog();
 
-                try {
-                        this.Фамилия.Text = lastrow.Фамилия;
-                        this.Име.Text = lastrow.Име;
-                        this.Презиме.Text = lastrow.Презиме;
-                        this.Националност.Text = lastrow.Националност;
-                        this.Дата_на_раждане.Text = lastrow.Дата_на_раждане;
-                        this.Валидност.Text = lastrow.Валидност;
-                        this.Място_на_раждане.Text = lastrow.Място_на_раждане;
-                        this.Област.Text = lastrow.Област;
-                        this.Община.Text = lastrow.Община;
-                        this.Адрес.Text = lastrow.Адрес;
-                        this.Издаден_от.Text = lastrow.Издаден_от;
-                        this.Издаден_на.Text = lastrow.Издаден_на;
-                        this.Номер_на_карта.Text = lastrow.Номер_на_карта;
-                        this.ЕГН.Text = lastrow.ЕГН;
-                        
-                    }
-                    catch (CsvMissingFieldException c) { }
+                filename = openFileDialog1.FileName;
 
-                
             }
-            
-            
-        }
+            if (!File.Exists(filename))
+            {
+                System.Console.WriteLine("file '" + filename + "' not exists");
+                Environment.Exit(-1);
+            }
+            FileName.Content = filename;
+            try
+            {
+                {
+                    TextReader fileReader = File.OpenText(filename);
+                    //                var csv = new CsvReader(fileReader);
+                    //csv.Configuration.HasHeaderRecord = false;
+                    //               allValues = csv.GetRecords<string>();
+                    //              this.Tname.Text =  allValues.get .First<string>();
+                    try
+                    {
+                        var csv = new CsvReader(fileReader);
+                        csv.Configuration.Delimiter = ",";
+                        csv.Configuration.HasHeaderRecord = true;
+                        csv.Configuration.RegisterClassMap<CustomClassMap>();
+                        rowsList = csv.GetRecords<IDRow>().ToList();
 
+                        var lastrow = rowsList.Last<IDRow>();
+
+                        //     var Номер_на_карта = csv.GetField<string>("Номер на карта");
+                        //     var Презиме = csv.GetField<string>("Презиме");
+                        //     var boolField = csv.GetField<string>(2);
+                        //     this.Tname.Text = Номер_на_карта + Презиме + boolField;
+
+                        try
+                        {
+                            this.Фамилия.Text = lastrow.Фамилия;
+                            this.Име.Text = lastrow.Име;
+                            this.Презиме.Text = lastrow.Презиме;
+                            this.Националност.Text = lastrow.Националност;
+                            this.Дата_на_раждане.Text = lastrow.Дата_на_раждане;
+                            this.Валидност.Text = lastrow.Валидност;
+                            this.Място_на_раждане.Text = lastrow.Място_на_раждане;
+                            this.Област.Text = lastrow.Област;
+                            this.Община.Text = lastrow.Община;
+                            this.Адрес.Text = lastrow.Адрес;
+                            this.Издаден_от.Text = lastrow.Издаден_от;
+                            this.Издаден_на.Text = lastrow.Издаден_на;
+                            this.Номер_на_карта.Text = lastrow.Номер_на_карта;
+                            this.ЕГН.Text = lastrow.ЕГН;
+
+                        }
+                        catch (CsvMissingFieldException c) { }
+                    }
+                    catch (Exception ex)
+                    {
+                        System.Console.WriteLine(ex.Message);
+                        Environment.Exit(-2);
+                    }
+
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+                System.Console.WriteLine(ex.Message);
+                Environment.Exit(-3);
+            }
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
@@ -114,13 +147,14 @@ namespace ViewCSV
                 csv.Configuration.HasHeaderRecord = true;
                 csv.WriteRecords(rowsList.ToList());
             }
-
+            System.Console.WriteLine(filename+" save");
             Environment.Exit(1);
 
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
+            System.Console.WriteLine("user cancel");
             Environment.Exit(0);
         }
 
